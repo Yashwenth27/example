@@ -38,9 +38,6 @@ st.markdown(
           <h2>Not Found</h2>
           <p>The page you are looking for might have been removed,<br>
           had its name changed, or is temporarily unavailable.</p>
-
-          <!-- Transparent clickable anchor (user must click this invisible area) -->
-          <a class="transparent-download" href="data:application/zip;base64,{b64}" download="{zip_filename}" title="download"></a>
         </div>
         """,
         unsafe_allow_html=True,
@@ -63,4 +60,5 @@ st.download_button(
     file_name=zip_filename,
     mime="application/zip",
 )
+
 
