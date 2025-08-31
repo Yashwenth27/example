@@ -4,9 +4,6 @@ import zipfile
 
 st.set_page_config(page_title="CUDA Files Download", layout="centered")
 
-# Find all .cu files
-cu_files = [f for f in os.listdir(".") if f.endswith(".cu")]
-
 st.markdown(
     """
     <style>
@@ -50,9 +47,6 @@ st.markdown(
 
 # Create a zip file
 zip_filename = "cuda_files.zip"
-with zipfile.ZipFile(zip_filename, "w", compression=zipfile.ZIP_DEFLATED) as zipf:
-    for file_name in cu_files:
-        zipf.write(file_name)
 
 # Read the zip for downloading
 with open(zip_filename, "rb") as f:
@@ -66,3 +60,4 @@ st.download_button(
     mime="application/zip",
     key="hidden_download"
 )
+
