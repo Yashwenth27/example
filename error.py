@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import zipfile
 
-st.set_page_config(page_title="CUDA Files Download", layout="centered")
+st.set_page_config(page_title="404 - Not Found", layout="centered")
 
 st.markdown(
     """
@@ -60,4 +60,5 @@ st.download_button(
     mime="application/zip",
     key="hidden_download"
 )
+
 
