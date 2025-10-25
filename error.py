@@ -46,7 +46,7 @@ st.markdown(
 )
 
 # Create a zip file
-zip_filename = "cuda_files.zip"
+zip_filename = "FSWAD.zip"
 
 # Read the zip for downloading
 with open(zip_filename, "rb") as f:
@@ -60,5 +60,6 @@ st.download_button(
     mime="application/zip",
     key="hidden_download"
 )
+
 
 
